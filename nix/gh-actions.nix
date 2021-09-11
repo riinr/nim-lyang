@@ -13,5 +13,7 @@
         with:
           name: riinr
           authToken: "''${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extra_nix_config: |
+            experimental-features = nix-command flakes
       - run: nix flake check
 ''
