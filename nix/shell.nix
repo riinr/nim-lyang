@@ -23,13 +23,16 @@ let
 
 in
 pkgs.mkShell {
-  buildInputs = with pkgs;[ nim-unwrapped nimble-unwrapped libyang ];
+  buildInputs = with pkgs;[ nim-unwrapped nimble-unwrapped libyang pcre2 ];
   shellHook = ''
     ${checkHook}
     ${updateReadme.hook}
     ${updateNimble.hook}
     ${gh-actions.hook}
     export LIBYANG=${libyang}
-    echo '--cincludes:"${libyang}/includes" --clibdir:"${libyang}/lib"' > nim.cfg
+    echo '
+    --passC="-I${libyang}/include/libyang"
+    --passL="-L${libyang}/lib"' > nim.cfg
+    nimble install -d -n 
   '';
 }
