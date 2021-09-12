@@ -3,8 +3,9 @@
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.pre-commit-flake.url = "github:cachix/pre-commit-hooks.nix";
+  inputs.libyang.url = "path:./nix/libyang";
 
-  outputs = { self, nixpkgs, flake-utils, pre-commit-flake }:
+  outputs = { self, nixpkgs, flake-utils, pre-commit-flake, libyang }:
     let systems = [ "x86_64-linux" ];
     in
     flake-utils.lib.eachSystem systems (system:
