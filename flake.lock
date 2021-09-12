@@ -45,13 +45,13 @@
         "type": "github"
       }
     },
-    "libyang": {
+    "libyang-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "narHash": "sha256-6MOvESJj1M2aWofwGAOaDpzWsgYeznG9jX54alNHilo=",
+        "narHash": "sha256-XXIY0r+h2zKgreJKjqgoJ9MYgxTc1l55JS677hmI/zE=",
         "path": "./nix/libyang",
         "type": "path"
       },
@@ -124,7 +124,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "libyang": "libyang",
+        "libyang-flake": "libyang-flake",
         "nixpkgs": "nixpkgs_2",
         "pre-commit-flake": "pre-commit-flake"
       }
