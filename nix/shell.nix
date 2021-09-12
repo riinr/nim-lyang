@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> { }
 , checks ? import ./checks.nix { inherit pkgs; }
+, libyang
 }:
 let
   project = import ./project.nix;
@@ -21,7 +22,7 @@ let
   gh-actions = toFile { ext = "yaml"; to = "./.github/workflows/"; } "gh-actions";
 in
 pkgs.mkShell {
-  buildInputs = with pkgs;[ nim-unwrapped nimble-unwrapped ];
+  buildInputs = with pkgs;[ nim-unwrapped nimble-unwrapped libyang ];
   shellHook = ''
     ${checkHook}
     ${updateReadme.hook}

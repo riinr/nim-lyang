@@ -12,10 +12,10 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         pre-commit-hooks = pre-commit-flake.lib.${system};
+        libyang = libyang-flake.outputs.defaultPackage.${system};
         checks = import ./nix/checks.nix { inherit pkgs system pre-commit-hooks; };
         shellHook = checks.pre-commit-check.shellHook;
-        devShell = import ./nix/shell.nix { inherit pkgs checks; };
-        libyang = libyang-flake.outputs.defaultPackage.${system};
+        devShell = import ./nix/shell.nix { inherit pkgs checks libyang; };
         packages = { libyang = libyang; };
       in
       {
