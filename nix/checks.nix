@@ -6,10 +6,10 @@
   pre-commit-check = pre-commit-hooks.run {
     src = ./.;
     hooks.nixpkgs-fmt.enable = true;
-    hooks.nimble-check = {
+    hooks.nim-test = {
       enable = true;
-      name = "Nim tests";
-      entry = "${pkgs.nimble-unwrapped}/bin/nimble check";
+      name = "Nim Tests";
+      entry = "${pkgs.nimble-unwrapped}/bin/nimble test";
       files = "\\.nim$";
       types = [ "text" "nim" ];
       language = "system";

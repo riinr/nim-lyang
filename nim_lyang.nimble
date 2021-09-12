@@ -10,3 +10,6 @@ srcDir        = "src"
 # Dependencies
 
 requires "nim >= 1.4.8"
+
+task test, "Run tests":
+  exec "find ./tests -iname 'test*.nim' -exec nim r -p:./src {} +"
