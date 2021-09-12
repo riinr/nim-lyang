@@ -20,6 +20,7 @@ let
   nimbleOut = to: file: ext: "${to}${project.slug}.${ext}";
   updateNimble = toFile { ext = "nimble"; out = nimbleOut; } "nimble";
   gh-actions = toFile { ext = "yaml"; to = "./.github/workflows/"; } "gh-actions";
+
 in
 pkgs.mkShell {
   buildInputs = with pkgs;[ nim-unwrapped nimble-unwrapped libyang ];
@@ -28,5 +29,7 @@ pkgs.mkShell {
     ${updateReadme.hook}
     ${updateNimble.hook}
     ${gh-actions.hook}
+    export LIBYANG=${libyang}
+    echo '--cincludes:"${libyang}/includes" --clibdir:"${libyang}/lib"' > nim.cfg
   '';
 }
