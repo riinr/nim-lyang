@@ -16,5 +16,5 @@
         with:
           name: riinr
           authToken: "''${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix flake check
+      - run: nix develop && nix build
 ''
